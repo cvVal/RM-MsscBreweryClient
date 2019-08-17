@@ -1,0 +1,1 @@
+package guru.microservices.msscbreweryclient.web.client;

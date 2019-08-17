@@ -1,0 +1,8 @@
+guru/microservices/msscbreweryclient/web/model/CustomerDto$CustomerDtoBuilder.class
+guru/microservices/msscbreweryclient/web/model/BeerDto$BeerDtoBuilder.class
+guru/microservices/msscbreweryclient/web/config/BlockingRestTemplateCustomizer.class
+guru/microservices/msscbreweryclient/web/model/BeerDto.class
+guru/microservices/msscbreweryclient/web/client/BreweryClient.class
+guru/microservices/msscbreweryclient/web/config/NIORestTemplateCustomizer.class
+guru/microservices/msscbreweryclient/MsscBreweryClientApplication.class
+guru/microservices/msscbreweryclient/web/model/CustomerDto.class
