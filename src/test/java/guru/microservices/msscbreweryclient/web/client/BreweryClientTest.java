@@ -2,15 +2,18 @@ package guru.microservices.msscbreweryclient.web.client;
 
 import guru.microservices.msscbreweryclient.web.model.BeerDto;
 import guru.microservices.msscbreweryclient.web.model.CustomerDto;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.math.BigDecimal;
 import java.net.URI;
 import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
+@Disabled
 @SpringBootTest
 class BreweryClientTest {
 
@@ -19,7 +22,7 @@ class BreweryClientTest {
 
     @Test
     void getBeerById() {
-        BeerDto dto = client.getBeerById(UUID.randomUUID());
+        BeerDto dto = client.getBeerById(UUID.fromString("0a818933-087d-47f2-ad83-2f986ed087eb"));
 
         assertNotNull(dto);
 
@@ -30,8 +33,10 @@ class BreweryClientTest {
         //given
         BeerDto beerDto = BeerDto.builder()
                 .beerName("New Beer")
-                .beerStyle("Black")
-                .upc(981110012L)
+                .beerStyle("LAGER")
+                .upc("06312750024004")
+                .price(new BigDecimal("2.99"))
+                .quantityOnHand(15)
                 .build();
 
         URI uri = client.saveNewBeer(beerDto);
@@ -47,22 +52,23 @@ class BreweryClientTest {
         //given
         BeerDto beerDto = BeerDto.builder()
                 .beerName("New Beer")
-                .beerStyle("Black")
-                .upc(981110012L)
+                .beerStyle("ALE")
+                .upc("06312750024001")
+                .price(new BigDecimal("5.99"))
                 .build();
 
-        client.updateBeer(UUID.randomUUID(), beerDto);
+        client.updateBeer(UUID.fromString("0a818933-087d-47f2-ad83-2f986ed087eb"), beerDto);
 
     }
 
     @Test
     void testDeleteBeer() {
-        client.deleteBeer(UUID.randomUUID());
+        client.deleteBeer(UUID.fromString("e3a6000b-40d8-429c-a855-a48e51882e09"));
     }
 
     @Test
     void getCustomerById() {
-        CustomerDto dto = client.getCustomerById(UUID.randomUUID());
+        CustomerDto dto = client.getCustomerById(UUID.fromString("e3a6000b-40d8-429c-a855-a48e51882e09"));
 
         assertNotNull(dto);
 
@@ -92,6 +98,6 @@ class BreweryClientTest {
 
     @Test
     void testDeleteCustomer() {
-        client.deleteCustomer(UUID.randomUUID());
+        client.deleteCustomer(UUID.fromString("e3a6000b-40d8-429c-a855-a48e51882e09"));
     }
 }
